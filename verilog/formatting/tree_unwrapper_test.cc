@@ -4878,6 +4878,14 @@ const TreeUnwrapperTestData kUnwrapPreprocessorTestCases[] = {
             L(2, {"BAR2", "=", "default_val", ")", "definition_body"}))),
     },
 
+    {
+        "consecutive preprocessor directives",
+        "`timescale 1ns / 1ns\n"
+        "`default_nettype none\n",
+        L(0, {"`timescale", "1ns", "/", "1ns"}),
+        L(0, {"`default_nettype", "none"}),
+    },
+
     // TODO(fangism): decide/test/support indenting preprocessor directives
     // nested inside `ifdefs.  Should `define inside `ifdef be indented?
 };
